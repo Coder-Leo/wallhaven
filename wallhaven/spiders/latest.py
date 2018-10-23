@@ -19,7 +19,7 @@ class LatestSpider(Spider):
         '''
         爬取所有最新发布图页面
         '''
-        for page in range(1, 200 + 1):
+        for page in range(1, 1 + 1):
             url = base_url + query_str + str(page)
             # print('--- --- page:', page)
             yield Request(url, self.parse)
@@ -43,7 +43,7 @@ class LatestSpider(Spider):
         img_h = response.xpath('//main[@id="main"]//img[@id="wallpaper"]/@data-wallpaper-height').extract_first()
         print('&_& url:', url)
         item = WallhavenItem()
-        item['url'] = [url]
+        item['url'] = url
         item['title'] = title
         item['data_id'] = data_id
         item['img_w'] = img_w

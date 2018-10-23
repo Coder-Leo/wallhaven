@@ -21,11 +21,11 @@ class LatestDownloadPipeline(ImagesPipeline):
 
     #通过 get_media_requests 方法为每一个图片链接生成请求
     def get_media_requests(self, item, info):
-        for image_url in item['url']:
-            yield Request(image_url)
+        yield Request(item['url'])
 
     # 单个 item 完成下载时的处理方法
     def item_completed(self, results, item, info):
+        print('=== results: ', results)
         image_paths = [x['path'] for ok, x in results if ok]
         if not image_paths:
             raise DropItem('Image Downloaded Failed')
