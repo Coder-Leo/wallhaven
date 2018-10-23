@@ -14,6 +14,8 @@ BOT_NAME = 'wallhaven'
 SPIDER_MODULES = ['wallhaven.spiders']
 NEWSPIDER_MODULE = 'wallhaven.spiders'
 
+#设置图片下载路径
+IMAGES_STORE = './images/latest'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'wallhaven (+http://www.yourdomain.com)'
@@ -64,9 +66,9 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'wallhaven.pipelines.WallhavenPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'wallhaven.pipelines.LatestDownloadPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
